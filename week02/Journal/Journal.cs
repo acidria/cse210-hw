@@ -32,8 +32,7 @@ class Journal
 
         foreach (Entry entry in _entries)
         {
-            if (entry.Prompt.Contains(keyword, StringComparison.OrdinalIgnoreCase)
-                || entry.Response.Contains(keyword, StringComparison.OrdinalIgnoreCase))
+            if (entry.Prompt.Contains(keyword) || entry.Response.Contains(keyword))
             {
                 entry.Display();
                 matchCount++;
