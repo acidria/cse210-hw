@@ -38,18 +38,19 @@ class Program
     }
 }
 
+// Stores the book, chapter, and verse or verse range.
 class Reference
 {
     private string _book;
     private int _chapter;
-    private int _verse;
+    private int _startVerse;
     private int _endVerse;
 
     public Reference(string book, int chapter, int verse)
     {
         _book = book;
         _chapter = chapter;
-        _verse = verse;
+        _startVerse = verse;
         _endVerse = verse;
     }
 
@@ -57,21 +58,22 @@ class Reference
     {
         _book = book;
         _chapter = chapter;
-        _verse = startVerse;
+        _startVerse = startVerse;
         _endVerse = endVerse;
     }
 
     public string GetDisplayText()
     {
-        if (_verse == _endVerse)
+        if (_startVerse == _endVerse)
         {
-            return _book + " " + _chapter + ":" + _verse;
+            return _book + " " + _chapter + ":" + _startVerse;
         }
 
-        return _book + " " + _chapter + ":" + _verse + "-" + _endVerse;
+        return _book + " " + _chapter + ":" + _startVerse + "-" + _endVerse;
     }
 }
 
+// Keeps the word text and whether it has been hidden.
 class Word
 {
     private string _text;
