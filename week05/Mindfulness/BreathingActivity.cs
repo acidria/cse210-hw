@@ -24,10 +24,9 @@ class BreathingActivity : Activity
                 Console.WriteLine("Breathe out...");
             }
 
-            int pauseLength = GetPauseLength(endTime, 4);
-            if (pauseLength > 0)
+            if (DateTime.Now < endTime)
             {
-                PauseWithCountdown(pauseLength);
+                PauseWithCountdown(4);
             }
 
             breatheIn = !breatheIn;

@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Threading;
 
 class ListingActivity : Activity
 {
@@ -39,51 +38,17 @@ class ListingActivity : Activity
         Console.WriteLine("Start listing items. Press Enter after each item.");
         Console.Write("> ");
 
-        string currentItem = "";
         while (DateTime.Now < endTime)
         {
-            if (Console.IsInputRedirected)
+            string item = Console.ReadLine();
+            if (item == null)
             {
-                string item = Console.ReadLine();
-                if (item == null)
-                {
-                    break;
-                }
-
-                if (item.Trim().Length > 0)
-                {
-                    _items.Add(item.Trim());
-                }
+                break;
             }
-            else if (Console.KeyAvailable)
-            {
-                ConsoleKeyInfo key = Console.ReadKey(true);
 
-                if (key.Key == ConsoleKey.Enter)
-                {
-                    if (currentItem.Trim().Length > 0)
-                    {
-                        _items.Add(currentItem.Trim());
-                    }
-
-                    currentItem = "";
-                    Console.WriteLine();
-                    Console.Write("> ");
-                }
-                else if (key.Key == ConsoleKey.Backspace && currentItem.Length > 0)
-                {
-                    currentItem = currentItem.Substring(0, currentItem.Length - 1);
-                    Console.Write("\b \b");
-                }
-                else if (!char.IsControl(key.KeyChar))
-                {
-                    currentItem += key.KeyChar;
-                    Console.Write(key.KeyChar);
-                }
-            }
-            else
+            if (item != "")
             {
-                Thread.Sleep(100);
+                _items.Add(item);
             }
         }
 

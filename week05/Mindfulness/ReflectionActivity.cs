@@ -55,10 +55,9 @@ class ReflectionActivity : Activity
             Console.WriteLine();
             Console.WriteLine(question);
 
-            int pauseLength = GetPauseLength(endTime, 5);
-            if (pauseLength > 0)
+            if (DateTime.Now < endTime)
             {
-                ShowSpinner(pauseLength);
+                ShowSpinner(5);
             }
         }
     }

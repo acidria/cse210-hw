@@ -89,12 +89,6 @@ abstract class Activity
         Console.WriteLine();
     }
 
-    protected int GetPauseLength(DateTime endTime, int maximumSeconds)
-    {
-        int remainingSeconds = (int)Math.Ceiling((endTime - DateTime.Now).TotalSeconds);
-        return Math.Min(maximumSeconds, remainingSeconds);
-    }
-
     protected string GetNextPrompt(List<string> allPrompts, List<string> availablePrompts)
     {
         if (availablePrompts.Count == 0)
